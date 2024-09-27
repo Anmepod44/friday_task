@@ -1,0 +1,21 @@
+{
+    "files.associations": {
+        "bit": "cpp",
+        "*.tcc": "cpp",
+        "cmath": "cpp",
+        "compare": "cpp",
+        "cstdlib": "cpp",
+        "ctime": "cpp",
+        "string": "cpp",
+        "vector": "cpp",
+        "algorithm": "cpp",
+        "memory_resource": "cpp",
+        "type_traits": "cpp",
+        "initializer_list": "cpp",
+        "iostream": "cpp",
+        "istream": "cpp",
+        "limits": "cpp",
+        "new": "cpp",
+        "ostream": "cpp"
+    }
+}
