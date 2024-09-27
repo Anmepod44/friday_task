@@ -186,18 +186,32 @@ public:
     }
 };
 
-int main(int argc, char* argv[]) {
-    if (argc != 3) {
-        std::cerr << "Usage: ./APE n m\n";
+int main() {
+    // Initialize variables for number of divisions and number of event days
+    int numDivisions;
+    int numEventDays;
+
+    // Prompt user for the number of divisions
+    std::cout << "Enter the number of divisions: ";
+    std::cin >> numDivisions;
+
+    // Prompt user for the number of event days
+    std::cout << "Enter the number of event days: ";
+    std::cin >> numEventDays;
+
+    // Ensure input is valid
+    if (numDivisions <= 0 || numEventDays <= 0) {
+        std::cerr << "Error: Both the number of divisions and event days must be positive integers.\n";
         return 1;
     }
 
-    int numDivisions = std::stoi(argv[1]);
-    int numEventDays = std::stoi(argv[2]);
-
+    // Seed the random number generator
     srand(static_cast<unsigned int>(time(0)));
 
+    // Create an instance of the ElectionSimulation class
     ElectionSimulation simulation(numDivisions);
+
+    // Run the simulation
     simulation.runSimulation(numEventDays);
 
     return 0;
