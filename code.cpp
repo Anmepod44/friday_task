@@ -186,32 +186,28 @@ public:
     }
 };
 
-int main() {
-    // Initialize variables for number of divisions and number of event days
-    int numDivisions;
-    int numEventDays;
-
-    // Prompt user for the number of divisions
-    std::cout << "Enter the number of divisions: ";
-    std::cin >> numDivisions;
-
-    // Prompt user for the number of event days
-    std::cout << "Enter the number of event days: ";
-    std::cin >> numEventDays;
-
-    // Ensure input is valid
-    if (numDivisions <= 0 || numEventDays <= 0) {
-        std::cerr << "Error: Both the number of divisions and event days must be positive integers.\n";
+int main(int argc, char* argv[]) {
+    if (argc != 3) {
+        std::cerr << "Usage: ./APE n m\n";
         return 1;
     }
 
-    // Seed the random number generator
-    srand(static_cast<unsigned int>(time(0)));
+    int numDivisions = std::stoi(argv[1]);
+    int numEventDays = std::stoi(argv[2]);
 
-    // Create an instance of the ElectionSimulation class
+    // Validate the input to ensure n is in the range 1 to 10, and m is in the range 1 to 30
+    if (numDivisions < 1 || numDivisions > 10) {
+        std::cerr << "Error: The number of divisions (n) must be between 1 and 10.\n";
+        return 1;
+    }
+    if (numEventDays < 1 || numEventDays > 30) {
+        std::cerr << "Error: The number of event days (m) must be between 1 and 30.\n";
+        return 1;
+    }
+
+    srand(static_cast<unsigned int>(time(0)));  // Seed random number generator
+
     ElectionSimulation simulation(numDivisions);
-
-    // Run the simulation
     simulation.runSimulation(numEventDays);
 
     return 0;
